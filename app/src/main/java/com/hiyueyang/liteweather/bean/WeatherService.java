@@ -1,9 +1,8 @@
 package com.hiyueyang.liteweather.bean;
-
-import retrofit2.Call;
-import retrofit2.http.GET;
-import retrofit2.http.Header;
-import retrofit2.http.Query;
+import retrofit.http.GET;
+import retrofit.http.Header;
+import retrofit.http.Query;
+import rx.Observable;
 
 /**
  * Created by YueYang on 2016/3/18.
@@ -11,5 +10,8 @@ import retrofit2.http.Query;
 public interface WeatherService {
 
     @GET("/apistore/weatherservice/recentweathers")
-    Call<WeatherInfo> getWeatherInfo(@Header("apikey") String apikey,@Query("cityname") String cityName);
+    Observable<WeatherInfo> getWeatherInfo(@Header("apikey") String apikey,@Query("cityname") String cityName);
+
+//    @GET("/apistore/weatherservice/recentweathers")
+//    Call<WeatherInfo> getWeatherInfo(@Header("apikey") String apikey,@Query("cityname") String cityName);
 }

@@ -3,9 +3,13 @@ package com.hiyueyang.liteweather;
 import com.hiyueyang.liteweather.bean.WeatherInfo;
 import com.hiyueyang.liteweather.bean.WeatherService;
 
-import retrofit2.Call;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit.GsonConverterFactory;
+import retrofit.Retrofit;
+import retrofit.RxJavaCallAdapterFactory;
+import rx.Observable;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by YueYang on 2016/3/18.
@@ -17,21 +21,40 @@ public class WeatherUtils {
 
     private static final Retrofit retrofit = new Retrofit
             .Builder()
+            .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())   //解析方法
             .baseUrl(BASE_URL)
             .build();
 
-    private static final WeatherService WEATHER_SERVICE = retrofit.create(WeatherService.class);
+    private static final WeatherService service = retrofit.create(WeatherService.class);
 
-    public static Call<WeatherInfo> getWeatherInfo(String cityName){
-        return WEATHER_SERVICE.getWeatherInfo(API_KEY,cityName);
+    public static void getWeatherObser(String cityName, final ObserableCallback callback){
+        Observable<WeatherInfo> weatherObser = service.getWeatherInfo(API_KEY,cityName);
+        weatherObser.observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(new Subscriber<WeatherInfo>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        callback.onError(e);
+                    }
+
+                    @Override
+                    public void onNext(WeatherInfo weatherInfo) {
+                        callback.onNext(weatherInfo);
+                    }
+                });
+
     }
 
+    public interface ObserableCallback{
+        void onError(Throwable throwable);
 
-
-
-
-
-
+        void onNext(WeatherInfo weatherInfo);
+    }
 
 }
