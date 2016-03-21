@@ -1,4 +1,4 @@
-package com.hiyueyang.liteweather.bean;
+package com.hiyueyang.liteweather.entity;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 package com.hiyueyang.liteweather;
 
-import com.hiyueyang.liteweather.bean.WeatherInfo;
-import com.hiyueyang.liteweather.bean.WeatherService;
+import com.hiyueyang.liteweather.entity.WeatherInfo;
+import com.hiyueyang.liteweather.entity.WeatherService;
 
 import retrofit.GsonConverterFactory;
 import retrofit.Retrofit;
@@ -27,6 +27,10 @@ public class WeatherUtils {
             .build();
 
     private static final WeatherService service = retrofit.create(WeatherService.class);
+
+    public static Observable<WeatherInfo> getWeatherObservable(String cityName){
+        return service.getWeatherInfo(API_KEY,cityName);
+    }
 
     public static void getWeatherObser(String cityName, final ObserableCallback callback){
         Observable<WeatherInfo> weatherObser = service.getWeatherInfo(API_KEY,cityName);

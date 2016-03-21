@@ -1,4 +1,4 @@
-package com.hiyueyang.liteweather.bean;
+package com.hiyueyang.liteweather.entity;
 import retrofit.http.GET;
 import retrofit.http.Header;
 import retrofit.http.Query;
@@ -11,7 +11,4 @@ public interface WeatherService {
 
     @GET("/apistore/weatherservice/recentweathers")
     Observable<WeatherInfo> getWeatherInfo(@Header("apikey") String apikey,@Query("cityname") String cityName);
-
-//    @GET("/apistore/weatherservice/recentweathers")
-//    Call<WeatherInfo> getWeatherInfo(@Header("apikey") String apikey,@Query("cityname") String cityName);
 }
