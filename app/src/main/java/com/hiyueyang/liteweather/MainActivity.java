@@ -6,17 +6,20 @@ import android.util.Log;
 
 import com.hiyueyang.liteweather.bean.WeatherInfo;
 
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        query("北京");
+        ButterKnife.bind(this);
     }
 
-    private void query(String cityName){
+    private void query(String cityName) {
         WeatherUtils.getWeatherObser(cityName, new WeatherUtils.ObserableCallback() {
 
             @Override
@@ -30,4 +33,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
 }
