@@ -1,5 +1,7 @@
 package com.hiyueyang.liteweather.presenter;
 
+import android.util.Log;
+
 import com.hiyueyang.liteweather.callback.GetWeatherLiteCallback;
 import com.hiyueyang.liteweather.entity.WeatherLite;
 import com.hiyueyang.liteweather.model.IWeatherLite;
@@ -23,14 +25,21 @@ public class WeatherLitePresenter {
         mWeatherLiteModel.getWeatherLite(cityName, new GetWeatherLiteCallback() {
             @Override
             public void loadError(Throwable throwable) {
+                Log.e("error1",throwable.fillInStackTrace().toString());
                 mWeatherLiteView.loadError(throwable);
             }
 
             @Override
             public void onNext(WeatherLite weatherLite) {
+                Log.e("sussess1","....");
                 mWeatherLiteView.setWeatherLite(weatherLite);
             }
         });
     }
+
+    public void getWeatherLiteList(){
+
+    }
+
 
 }

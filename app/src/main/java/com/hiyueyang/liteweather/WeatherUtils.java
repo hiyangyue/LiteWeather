@@ -1,9 +1,11 @@
 package com.hiyueyang.liteweather;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.hiyueyang.liteweather.gson.LiteDeserializer;
 import com.hiyueyang.liteweather.entity.WeatherInfo;
 import com.hiyueyang.liteweather.entity.WeatherLite;
 import com.hiyueyang.liteweather.entity.WeatherService;
-
 import retrofit.GsonConverterFactory;
 import retrofit.Retrofit;
 import retrofit.RxJavaCallAdapterFactory;
@@ -17,10 +19,40 @@ public class WeatherUtils {
     public static final String BASE_URL = "http://apis.baidu.com";
     public static final String API_KEY = "9fed5dbbb6bc62adc3021773fb9069a2";
 
+    private static Gson liteGson = new GsonBuilder()
+            .registerTypeAdapter(WeatherLite.class,new LiteDeserializer())
+            .create();
+
+//    private static Gson getGson(){
+//        GsonBuilder gsonBuilder = new GsonBuilder()
+//                .setExclusionStrategies(new ExclusionStrategy() {
+//                    @Override
+//                    public boolean shouldSkipField(FieldAttributes f) {
+//                        return f.getDeclaringClass().equals(RealmObject.class);
+//                    }
+//
+//                    @Override
+//                    public boolean shouldSkipClass(Class<?> clazz) {
+//                        return false;
+//                    }
+//                });
+//
+//        gsonBuilder.registerTypeAdapter(WeatherLite.class, new LiteDeserializer())
+//                .registerTypeAdapter(WeatherLite.class, new LiteSerializer());
+//
+//        try {
+//            gsonBuilder.registerTypeAdapter(Class.forName("io.realm.WeatherLiteRealmProxy"), new LiteSerializer())
+//                    .registerTypeAdapter(Class.forName("io.realm.WeatherLiteRealmProxy"), new LiteDeserializer());
+//        } catch (ClassNotFoundException e) {
+//            e.printStackTrace();
+//        }
+//        return gsonBuilder.create();
+//    }
+
     private static final Retrofit retrofit = new Retrofit
             .Builder()
             .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-            .addConverterFactory(GsonConverterFactory.create())   //解析方法
+            .addConverterFactory(GsonConverterFactory.create(liteGson))
             .baseUrl(BASE_URL)
             .build();
 
