@@ -1,15 +1,13 @@
 package com.hiyueyang.liteweather;
 
 import com.hiyueyang.liteweather.entity.WeatherInfo;
+import com.hiyueyang.liteweather.entity.WeatherLite;
 import com.hiyueyang.liteweather.entity.WeatherService;
 
 import retrofit.GsonConverterFactory;
 import retrofit.Retrofit;
 import retrofit.RxJavaCallAdapterFactory;
 import rx.Observable;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * Created by YueYang on 2016/3/18.
@@ -32,33 +30,65 @@ public class WeatherUtils {
         return service.getWeatherInfo(API_KEY,cityName);
     }
 
-    public static void getWeatherObser(String cityName, final ObserableCallback callback){
-        Observable<WeatherInfo> weatherObser = service.getWeatherInfo(API_KEY,cityName);
-        weatherObser.observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
-                .subscribe(new Subscriber<WeatherInfo>() {
-                    @Override
-                    public void onCompleted() {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        callback.onError(e);
-                    }
-
-                    @Override
-                    public void onNext(WeatherInfo weatherInfo) {
-                        callback.onNext(weatherInfo);
-                    }
-                });
-
+    public static Observable<WeatherLite> getWeatherLiteObser(String cityName){
+        return service.getWeatherLite(API_KEY,cityName);
     }
+
+//    public static void getWeatherObser(String cityName, final ObserableCallback callback){
+//        Observable<WeatherInfo> weatherObser = service.getWeatherInfo(API_KEY,cityName);
+//        weatherObser.observeOn(AndroidSchedulers.mainThread())
+//                .subscribeOn(Schedulers.io())
+//                .subscribe(new Subscriber<WeatherInfo>() {
+//                    @Override
+//                    public void onCompleted() {
+//
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//                        callback.onError(e);
+//                    }
+//
+//                    @Override
+//                    public void onNext(WeatherInfo weatherInfo) {
+//                        callback.onNext(weatherInfo);
+//                    }
+//                });
+//
+//    }
+//
+//    public static void getWeatherLite(String cityName,final WeatherLiteCallback callback){
+//        Observable<WeatherLite> liteObservable = service.getWeatherLite(API_KEY,cityName);
+//        liteObservable.observeOn(AndroidSchedulers.mainThread())
+//                .subscribeOn(Schedulers.io())
+//                .subscribe(new Subscriber<WeatherLite>() {
+//                    @Override
+//                    public void onCompleted() {
+//
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//                        callback.onError(e);
+//                    }
+//
+//                    @Override
+//                    public void onNext(WeatherLite weatherLite) {
+//                        callback.onNext(weatherLite);
+//                    }
+//                });
+//    }
 
     public interface ObserableCallback{
         void onError(Throwable throwable);
 
         void onNext(WeatherInfo weatherInfo);
+    }
+
+    public interface WeatherLiteCallback{
+        void onError(Throwable throwable);
+
+        void onNext(WeatherLite weatherLite);
     }
 
 }

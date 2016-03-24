@@ -35,4 +35,8 @@ public class WeatherPresenter {
 
     }
 
+    public String getPlace(){
+        return null;
+    }
+
 }

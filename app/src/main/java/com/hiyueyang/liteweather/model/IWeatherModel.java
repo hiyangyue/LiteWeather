@@ -11,5 +11,4 @@ public interface IWeatherModel {
     WeatherInfo getWeather(String cityName,GetWeatherCallBack callBack);
 
     void saveWeather();
-
 }

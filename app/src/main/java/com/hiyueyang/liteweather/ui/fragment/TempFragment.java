@@ -17,7 +17,7 @@ import butterknife.ButterKnife;
 public class TempFragment extends BaseFragment {
 
 
-    @Bind(R.id.container)
+    @Bind(R.id.rl)
     RecyclerView mRecyclerView;
 
     @Override
