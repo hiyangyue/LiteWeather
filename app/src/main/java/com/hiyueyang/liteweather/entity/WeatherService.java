@@ -10,10 +10,6 @@ import rx.Observable;
  */
 public interface WeatherService {
 
-
-    @GET("/apistore/weatherservice/cityname")
-    Observable<WeatherLite> getWeatherLite(@Header("apikey") String apikey,@Query("cityname") String cityName);
-
     @GET("/apistore/weatherservice/recentweathers")
     Observable<WeatherInfo> getWeatherInfo(@Header("apikey") String apikey,@Query("cityname") String cityName);
 }

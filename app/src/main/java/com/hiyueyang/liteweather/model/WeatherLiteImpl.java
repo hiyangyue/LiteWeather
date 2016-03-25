@@ -1,6 +1,8 @@
 package com.hiyueyang.liteweather.model;
 
-import com.hiyueyang.liteweather.WeatherUtils;
+import android.util.Log;
+
+import com.hiyueyang.liteweather.Network;
 import com.hiyueyang.liteweather.callback.GetWeatherLiteCallback;
 import com.hiyueyang.liteweather.entity.WeatherLite;
 
@@ -15,7 +17,7 @@ public class WeatherLiteImpl implements IWeatherLite {
 
     @Override
     public WeatherLite getWeatherLite(String cityName, final GetWeatherLiteCallback callback) {
-        WeatherUtils.getWeatherLiteObser(cityName)
+        Network.getWeatherLiteObser(cityName)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Subscriber<WeatherLite>() {

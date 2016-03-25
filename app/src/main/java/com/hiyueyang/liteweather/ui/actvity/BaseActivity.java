@@ -11,13 +11,11 @@ import butterknife.ButterKnife;
  */
 public abstract class BaseActivity extends AppCompatActivity {
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getResourceLayout());
         ButterKnife.bind(this);
-
     }
 
     @Override
@@ -30,7 +28,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected void initToolbar(Toolbar toolbar){
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+//        getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
 }

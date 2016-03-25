@@ -56,7 +56,7 @@ public class LiteWeatherAdapter extends RecyclerView.Adapter<LiteWeatherAdapter.
     }
 
     public interface OnItemClickListener{
-        void onItemClicked(View view,int position);
+        void onItemClicked(View view,String cityName);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
@@ -81,7 +81,7 @@ public class LiteWeatherAdapter extends RecyclerView.Adapter<LiteWeatherAdapter.
         @Override
         public void onClick(View v) {
             if (listener != null){
-                listener.onItemClicked(v,getLayoutPosition());
+                listener.onItemClicked(v,tvCity.getText().toString());
             }
         }
     }

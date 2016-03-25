@@ -1,6 +1,6 @@
 package com.hiyueyang.liteweather.model;
 
-import com.hiyueyang.liteweather.WeatherUtils;
+import com.hiyueyang.liteweather.Network;
 import com.hiyueyang.liteweather.callback.GetWeatherCallBack;
 import com.hiyueyang.liteweather.entity.WeatherInfo;
 
@@ -15,7 +15,7 @@ public class WeatherInfoImpl implements IWeatherModel {
 
     @Override
     public WeatherInfo getWeather(String cityName, final GetWeatherCallBack callBack) {
-        WeatherUtils.getWeatherObservable(cityName)
+        Network.getWeatherObservable(cityName)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Subscriber<WeatherInfo>() {

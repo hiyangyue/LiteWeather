@@ -1,5 +1,7 @@
 package com.hiyueyang.liteweather.presenter;
 
+import android.util.Log;
+
 import com.hiyueyang.liteweather.callback.GetWeatherCallBack;
 import com.hiyueyang.liteweather.entity.WeatherInfo;
 import com.hiyueyang.liteweather.model.IWeatherModel;
@@ -19,7 +21,7 @@ public class WeatherPresenter {
         mWeatherModel = new WeatherInfoImpl();
     }
 
-    public void setWeatherInfo(String cityName){
+    public void getWeatherInfo(String cityName){
 
         mWeatherModel.getWeather(cityName, new GetWeatherCallBack() {
             @Override
@@ -33,10 +35,6 @@ public class WeatherPresenter {
             }
         });
 
-    }
-
-    public String getPlace(){
-        return null;
     }
 
 }

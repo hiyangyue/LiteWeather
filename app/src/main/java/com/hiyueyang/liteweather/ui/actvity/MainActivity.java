@@ -1,5 +1,6 @@
 package com.hiyueyang.liteweather.ui.actvity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -31,6 +32,7 @@ public class MainActivity extends BaseActivity implements WeatherLiteView{
     private WeatherLitePresenter mPresenter;
     private LiteWeatherAdapter mLiteAdapter;
     private List<WeatherLite> weatherLiteList;
+    public static final String START_DETAIL = "detail";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,12 @@ public class MainActivity extends BaseActivity implements WeatherLiteView{
     }
 
     @Override
+    protected void initToolbar(Toolbar toolbar) {
+        super.initToolbar(toolbar);
+        getSupportActionBar().setTitle(getResources().getString(R.string.toolbar_title));
+    }
+
+    @Override
     protected int getResourceLayout() {
         return R.layout.activity_main;
     }
@@ -56,29 +64,32 @@ public class MainActivity extends BaseActivity implements WeatherLiteView{
 
     private void initRecyclerView(){
         weatherLiteList = new ArrayList<>();
-
         mLiteAdapter = new LiteWeatherAdapter(this,weatherLiteList);
         mLiteAdapter.setOnItemClickListener(new LiteWeatherAdapter.OnItemClickListener() {
             @Override
-            public void onItemClicked(View view, int position) {
-                Log.e("cliceked","positon is   " + position);
+            public void onItemClicked(View view, String cityName) {
+                startDetailActivity(cityName);
             }
         });
         rl.setAdapter(mLiteAdapter);
         rl.setLayoutManager(new LinearLayoutManager(this));
     }
 
-
     @Override
     public void setWeatherLite(WeatherLite weatherLite) {
-        Log.e("success...",weatherLite.getCity());
         weatherLiteList.add(weatherLite);
-        mLiteAdapter.notifyDataSetChanged();
+        mLiteAdapter.notifyItemInserted(weatherLiteList.size());
     }
 
     @Override
     public void loadError(Throwable throwable) {
-        Log.e("error","..." + throwable.fillInStackTrace().toString());
+
+    }
+
+    private void startDetailActivity(String cityName){
+        Intent intent = new Intent(this,WeatherDetailActivity.class);
+        intent.putExtra(START_DETAIL,cityName);
+        startActivity(intent);
     }
 
 
