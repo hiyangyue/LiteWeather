@@ -1,4 +1,6 @@
-package com.hiyueyang.liteweather.entity;
+package com.hiyueyang.liteweather.network;
+
+import com.hiyueyang.liteweather.model.entity.WeatherLite;
 
 import retrofit.http.GET;
 import retrofit.http.Header;

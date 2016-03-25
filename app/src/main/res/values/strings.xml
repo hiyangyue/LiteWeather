@@ -7,4 +7,7 @@
     <string name="action_search">Search</string>
 
     <string name="toolbar_title">Location</string>
+
+    <string name="load_error">Something wrong  (* ￣︿￣)</string>
+    <string name="load_success">Load Success (๑•̀ㅂ•́)و✧</string>
 </resources>

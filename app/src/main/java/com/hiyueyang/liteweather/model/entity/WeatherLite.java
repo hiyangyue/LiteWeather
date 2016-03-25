@@ -1,4 +1,4 @@
-package com.hiyueyang.liteweather.entity;
+package com.hiyueyang.liteweather.model.entity;
 
 
 /**

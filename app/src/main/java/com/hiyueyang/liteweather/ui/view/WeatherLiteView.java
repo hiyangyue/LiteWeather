@@ -1,6 +1,6 @@
 package com.hiyueyang.liteweather.ui.view;
 
-import com.hiyueyang.liteweather.entity.WeatherLite;
+import com.hiyueyang.liteweather.model.entity.WeatherLite;
 
 /**
  * Created by YueYang on 2016/3/24.

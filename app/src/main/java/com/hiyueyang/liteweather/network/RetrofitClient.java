@@ -1,13 +1,11 @@
-package com.hiyueyang.liteweather;
+package com.hiyueyang.liteweather.network;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.hiyueyang.liteweather.entity.LiteService;
-import com.hiyueyang.liteweather.gson.LiteDeserializer;
-import com.hiyueyang.liteweather.entity.WeatherInfo;
-import com.hiyueyang.liteweather.entity.WeatherLite;
-import com.hiyueyang.liteweather.entity.WeatherService;
-import com.hiyueyang.liteweather.gson.WeatherDeserializer;
+import com.hiyueyang.liteweather.network.gson.LiteDeserializer;
+import com.hiyueyang.liteweather.model.entity.WeatherInfo;
+import com.hiyueyang.liteweather.model.entity.WeatherLite;
+import com.hiyueyang.liteweather.network.gson.WeatherDeserializer;
 
 import retrofit.GsonConverterFactory;
 import retrofit.Retrofit;
@@ -17,7 +15,7 @@ import rx.Observable;
 /**
  * Created by YueYang on 2016/3/18.
  */
-public class Network {
+public class RetrofitClient {
 
     public static final String BASE_URL = "http://apis.baidu.com";
     public static final String API_KEY = "9fed5dbbb6bc62adc3021773fb9069a2";

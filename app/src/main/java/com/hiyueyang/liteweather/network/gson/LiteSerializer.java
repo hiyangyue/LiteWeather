@@ -1,10 +1,10 @@
-package com.hiyueyang.liteweather.gson;
+package com.hiyueyang.liteweather.network.gson;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
-import com.hiyueyang.liteweather.entity.WeatherLite;
+import com.hiyueyang.liteweather.model.entity.WeatherLite;
 
 import java.lang.reflect.Type;
 

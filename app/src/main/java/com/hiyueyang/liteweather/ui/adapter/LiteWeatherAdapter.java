@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hiyueyang.liteweather.R;
-import com.hiyueyang.liteweather.entity.WeatherLite;
+import com.hiyueyang.liteweather.model.entity.WeatherLite;
 
 import java.util.List;
 

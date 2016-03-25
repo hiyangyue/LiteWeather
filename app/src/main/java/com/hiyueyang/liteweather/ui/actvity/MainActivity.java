@@ -5,12 +5,11 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 
 import com.hiyueyang.liteweather.R;
-import com.hiyueyang.liteweather.entity.WeatherLite;
+import com.hiyueyang.liteweather.model.entity.WeatherLite;
 import com.hiyueyang.liteweather.presenter.WeatherLitePresenter;
 import com.hiyueyang.liteweather.ui.adapter.LiteWeatherAdapter;
 import com.hiyueyang.liteweather.ui.view.WeatherLiteView;

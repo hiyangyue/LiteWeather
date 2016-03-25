@@ -1,4 +1,4 @@
-package com.hiyueyang.liteweather.entity;
+package com.hiyueyang.liteweather.model.entity;
 
 import java.util.List;
 
@@ -97,13 +97,6 @@ public class WeatherInfo {
         private String hightemp;
         private String lowtemp;
         private String type;
-        /**
-         * name : 感冒指数
-         * code : gm
-         * index :
-         * details : 昼夜温差大，且空气湿度较大，易发生感冒，请注意适当增减衣服，加强自我防护避免感冒。
-         * otherName :
-         */
 
         private List<IndexEntity> index;
 

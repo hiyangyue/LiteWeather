@@ -1,11 +1,11 @@
-package com.hiyueyang.liteweather.gson;
+package com.hiyueyang.liteweather.network.gson;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
-import com.hiyueyang.liteweather.entity.WeatherInfo;
+import com.hiyueyang.liteweather.model.entity.WeatherInfo;
 
 import java.lang.reflect.Type;
 
