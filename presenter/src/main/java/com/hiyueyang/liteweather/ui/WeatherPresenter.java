@@ -1,4 +1,4 @@
-package com.hiyueyang.liteweather.presenter;
+package com.hiyueyang.liteweather.ui;
 
 import com.hiyangyue.model.model.callback.GetWeatherCallBack;
 import com.hiyangyue.model.model.entity.WeatherInfo;

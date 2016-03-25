@@ -1,4 +1,4 @@
-package com.hiyueyang.liteweather.presenter;
+package com.hiyueyang.liteweather.ui;
 
 import android.util.Log;
 
