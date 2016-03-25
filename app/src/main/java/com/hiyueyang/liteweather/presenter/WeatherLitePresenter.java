@@ -2,10 +2,10 @@ package com.hiyueyang.liteweather.presenter;
 
 import android.util.Log;
 
-import com.hiyueyang.liteweather.model.callback.GetWeatherLiteCallback;
-import com.hiyueyang.liteweather.model.entity.WeatherLite;
-import com.hiyueyang.liteweather.model.IWeatherLite;
-import com.hiyueyang.liteweather.model.WeatherLiteImpl;
+import com.hiyangyue.model.model.callback.GetWeatherLiteCallback;
+import com.hiyangyue.model.model.entity.WeatherLite;
+import com.hiyangyue.model.model.IWeatherLite;
+import com.hiyangyue.model.model.WeatherLiteImpl;
 import com.hiyueyang.liteweather.ui.view.WeatherLiteView;
 
 /**

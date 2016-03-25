@@ -1,13 +1,13 @@
-package com.hiyueyang.liteweather.ui.view;
+package com.hiyangyue.model.model.callback;
 
 import com.hiyangyue.model.model.entity.WeatherInfo;
 
 /**
  * Created by YueYang on 2016/3/21.
  */
-public interface WeatherView {
+public interface GetWeatherCallBack {
 
-    void setWeatherInfo(WeatherInfo weatherInfo);
+    void loadSuccess(WeatherInfo weatherInfo);
 
     void loadError(Throwable e);
 

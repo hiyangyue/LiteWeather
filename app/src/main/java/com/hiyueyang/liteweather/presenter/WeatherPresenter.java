@@ -1,9 +1,9 @@
 package com.hiyueyang.liteweather.presenter;
 
-import com.hiyueyang.liteweather.model.callback.GetWeatherCallBack;
-import com.hiyueyang.liteweather.model.entity.WeatherInfo;
-import com.hiyueyang.liteweather.model.IWeatherModel;
-import com.hiyueyang.liteweather.model.WeatherInfoImpl;
+import com.hiyangyue.model.model.callback.GetWeatherCallBack;
+import com.hiyangyue.model.model.entity.WeatherInfo;
+import com.hiyangyue.model.model.IWeatherModel;
+import com.hiyangyue.model.model.WeatherInfoImpl;
 import com.hiyueyang.liteweather.ui.view.WeatherView;
 
 /**

@@ -9,7 +9,7 @@ import android.view.Menu;
 import android.view.View;
 
 import com.hiyueyang.liteweather.R;
-import com.hiyueyang.liteweather.model.entity.WeatherLite;
+import com.hiyangyue.model.model.entity.WeatherLite;
 import com.hiyueyang.liteweather.presenter.WeatherLitePresenter;
 import com.hiyueyang.liteweather.ui.adapter.LiteWeatherAdapter;
 import com.hiyueyang.liteweather.ui.view.WeatherLiteView;
