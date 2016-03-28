@@ -1,5 +1,6 @@
-package com.hiyangyue.model.model;
+package com.hiyangyue.model.model.impl;
 
+import com.hiyangyue.model.model.model.IWeatherModel;
 import com.hiyangyue.model.model.callback.GetWeatherCallBack;
 import com.hiyangyue.model.model.entity.WeatherInfo;
 import com.hiyangyue.model.model.network.RetrofitClient;

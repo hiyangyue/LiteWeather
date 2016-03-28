@@ -1,4 +1,4 @@
-package com.hiyangyue.model.model;
+package com.hiyangyue.model.model.model;
 
 import com.hiyangyue.model.model.callback.GetWeatherCallBack;
 import com.hiyangyue.model.model.entity.WeatherInfo;

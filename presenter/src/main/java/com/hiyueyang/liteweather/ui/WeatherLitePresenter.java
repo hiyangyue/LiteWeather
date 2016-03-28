@@ -4,8 +4,8 @@ import android.util.Log;
 
 import com.hiyangyue.model.model.callback.GetWeatherLiteCallback;
 import com.hiyangyue.model.model.entity.WeatherLite;
-import com.hiyangyue.model.model.IWeatherLite;
-import com.hiyangyue.model.model.WeatherLiteImpl;
+import com.hiyangyue.model.model.model.IWeatherLite;
+import com.hiyangyue.model.model.impl.WeatherLiteImpl;
 import com.hiyueyang.liteweather.ui.view.WeatherLiteView;
 
 /**
