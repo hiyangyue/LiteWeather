@@ -23,6 +23,14 @@
 
         </activity>
 
+
+        <activity android:name=".ui.actvity.SearchActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.actvity.MainActivity" />
+        </activity>
+
+
         <activity android:name=".ui.actvity.WeatherDetailActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

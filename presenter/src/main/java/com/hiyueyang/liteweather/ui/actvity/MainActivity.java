@@ -2,37 +2,44 @@ package com.hiyueyang.liteweather.ui.actvity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 
-import com.hiyueyang.liteweather.R;
 import com.hiyangyue.model.model.entity.WeatherLite;
-import com.hiyueyang.liteweather.ui.adapter.LiteWeatherAdapter;
+import com.hiyueyang.liteweather.R;
 import com.hiyueyang.liteweather.ui.WeatherLitePresenter;
 import com.hiyueyang.liteweather.ui.adapter.LiteWeatherAdapter;
+import com.hiyueyang.liteweather.ui.view.SnackUtils;
 import com.hiyueyang.liteweather.ui.view.WeatherLiteView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
+
 /**
  * Created by YueYang on 2016/3/23.
  */
-public class MainActivity extends BaseActivity implements WeatherLiteView{
+public class MainActivity extends BaseActivity implements WeatherLiteView {
 
     @Bind(R.id.toolbar)
     Toolbar toolbar;
     @Bind(R.id.rl)
     RecyclerView rl;
+    @Bind(R.id.fab)
+    FloatingActionButton fab;
 
     private WeatherLitePresenter mPresenter;
     private LiteWeatherAdapter mLiteAdapter;
     private List<WeatherLite> weatherLiteList;
     public static final String START_DETAIL = "detail";
+    public static final int FAB_REQUEST = 101;
+    public static final String CITY_NAME = "city_name";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +49,15 @@ public class MainActivity extends BaseActivity implements WeatherLiteView{
         initRecyclerView();
         mPresenter = new WeatherLitePresenter(this);
         mPresenter.getWeatherLite("南京");
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == FAB_REQUEST && resultCode == RESULT_OK){
+//            Log.e("onActivityResult",data.getStringExtra(CITY_NAME));
+            mPresenter.getWeatherLite(data.getStringExtra(CITY_NAME));
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
@@ -62,9 +78,9 @@ public class MainActivity extends BaseActivity implements WeatherLiteView{
     }
 
 
-    private void initRecyclerView(){
+    private void initRecyclerView() {
         weatherLiteList = new ArrayList<>();
-        mLiteAdapter = new LiteWeatherAdapter(this,weatherLiteList);
+        mLiteAdapter = new LiteWeatherAdapter(this, weatherLiteList);
         mLiteAdapter.setOnItemClickListener(new LiteWeatherAdapter.OnItemClickListener() {
             @Override
             public void onItemClicked(View view, String cityName) {
@@ -83,32 +99,31 @@ public class MainActivity extends BaseActivity implements WeatherLiteView{
 
     @Override
     public void loadError(Throwable throwable) {
-
+        SnackUtils.showSnackbar(rl,"May be cityName not true");
     }
 
-    private void startDetailActivity(String cityName){
-        Intent intent = new Intent(this,WeatherDetailActivity.class);
-        intent.putExtra(START_DETAIL,cityName);
+    public void startSearchView(View view){
+        startActivityForResult(new Intent(this,SearchActivity.class),FAB_REQUEST);
+    }
+
+    private void startDetailActivity(String cityName) {
+        Intent intent = new Intent(this, WeatherDetailActivity.class);
+        intent.putExtra(START_DETAIL, cityName);
         startActivity(intent);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

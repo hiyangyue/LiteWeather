@@ -2,11 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:title="@string/action_search"
-        android:icon="@drawable/icon_search"
-        app:showAsAction="always" />
-
-    <item android:title="@string/action_settings"
-        android:showAsAction="never"/>
+    <item android:id="@+id/action_setting"
+        android:title="@string/action_settings"
+        app:showAsAction="never"/>
 
 </menu>
